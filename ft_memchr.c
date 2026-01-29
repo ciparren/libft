@@ -12,29 +12,29 @@
 #include <stdio.h>
 #include <string.h>
 
-void *ft_memchr(const void *s, int c, size_t n)
+void	*ft_memchr(const void *s, int c, size_t n)
 {
-    unsigned char uc;
-    unsigned char *ptr;
-    size_t i;
+	unsigned char	uc;
+	unsigned char	*ptr;
+	size_t			i;
 
-    uc = (unsigned char)c;
-    ptr = (unsigned char *)s;
-    i = 0;
-    
-    while (i < n)
-    {
-        if (ptr[i] == uc)
-            return ((void *)(ptr + i));
-        i++;
-    }
-    
-    return (NULL);
+	uc = (unsigned char)c;
+	ptr = (unsigned char *)s;
+	i = 0;
+	while (i < n)
+	{
+		if (ptr[i] == uc)
+			return ((void *)(ptr + i));
+		i++;
+	}
+	return (NULL);
 }
 /*
  int	main(void)
 {
-	int	s[5] = {1,2,3,4,5};
+	int	s[5];
+
+	s[5] = {1,2,3,4,5};
 	//char c  = 'e';
 	printf("Resultado custom: <%d> \n", (char *)ft_memchr(s,  2, 4));
 	//char *t = "Hoola me llamo";
