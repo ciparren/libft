@@ -15,20 +15,19 @@
 /*
 char	upper(unsigned int i, char c)
 {
-	
-    if (c >= 'a' && c <= 'z')
-    {   
-        return (c - 32);	
-    }
-    return (c); // Si es impar, devolvemos el carácter tal cual
+	if (c >= 'a' && c <= 'z')
+	{
+		return (c - 32);
+	}
+	return (c); // Si es impar, devolvemos el carácter tal cual
 }
 */
 
 char	*ft_strmapi(char const *s, char (*f)(unsigned int, char))
 {
-	int		i;
-	size_t	len;
-	char	*str;
+	unsigned int	i;
+	size_t			len;
+	char			*str;
 
 	i = 0;
 	if (!s || !f)
@@ -39,7 +38,7 @@ char	*ft_strmapi(char const *s, char (*f)(unsigned int, char))
 		return (NULL);
 	while (s[i])
 	{
-		str[i] = f(0, s[i]);
+		str[i] = f(i, s[i]);
 		i++;
 	}
 	str[i] = '\0';
@@ -54,7 +53,6 @@ int	main(void)
 
 	str = "hola mundo";
 	printf("Cadena original: %s\n", str);
-	
 	result = ft_strmapi(str, upper);
 	if (result)
 	{

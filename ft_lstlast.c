@@ -14,19 +14,17 @@
 
 t_list	*ft_lstlast(t_list *lst)
 {
-	t_list	*lastnode;
-
-	lastnode = lst;
-	while (lastnode->next != NULL)
-	{
-		lastnode = lastnode->next;
-	}
-	return (lastnode);
+	if (!lst)
+		return (NULL);
+	while (lst->next != NULL)
+		lst = lst->next;
+	return (lst);
 }
+
 /*
 int	main(void)
 {
-    t_list	*head;
+	t_list	*head;
 	t_list	*node1;
 	t_list	*node2;
 	t_list	*node3;
@@ -46,9 +44,8 @@ int	main(void)
 	ft_lstadd_front(&head, node1);
 	ft_lstadd_front(&head, node2);
 	ft_lstadd_front(&head, node3);
-    lastnode = ft_lstlast(head);
-	
+	lastnode = ft_lstlast(head);
 	printf("Último nodo: %s", (char *)(lastnode->content));
 	return (0);
 }
-    */
+	*/

@@ -14,17 +14,16 @@
 
 void	ft_striteri(char *s, void (*f)(unsigned int, char *))
 {
-	int		i;
-	size_t	len;
+	unsigned int		i;
 
 	i = 0;
 	if (!s || !f)
-		return (NULL);
+		return ;
 	while (s[i])
 	{
-		f(i, s[i]);
-		i++; 
+		f(i, &s[i]);
+		i++;
 	}
 	s[i] = '\0';
-	return (s);
+	return ;
 }

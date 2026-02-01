@@ -14,6 +14,36 @@
 char	*ft_substr(char const *s, unsigned int start, size_t len)
 {
 	char	*res;
+	size_t	s_len;
+	size_t	i;
+
+	if (!s)
+		return (NULL);
+	s_len = ft_strlen(s);
+	if (start >= s_len)
+	{
+		res = (char *)malloc(1);
+		if (!res)
+			return (NULL);
+		*res = '\0';
+		return (res);
+	}
+	if (len > s_len - start)
+		len = s_len - start;
+	res = (char *)malloc(sizeof(char) * (len + 1));
+	if (!res)
+		return (NULL);
+	i = -1;
+	while (++i < len)
+		res[i] = s[start + i];
+	res[i] = '\0';
+	return (res);
+}
+
+/*
+char	*ft_substr(char const *s, unsigned int start, size_t len)
+{
+	char	*res;
 	size_t	cont;
 	size_t	lens;
 
@@ -24,15 +54,15 @@ char	*ft_substr(char const *s, unsigned int start, size_t len)
 	if (start >= lens)
 	{
 		res = malloc((sizeof(char) * (lens - start)) + 1);
-		if(!res)
+		if (!res)
 			return (NULL);
 		res[0] = '\0';
 		return (res);
 	}
-	if(len > lens - start)
+	if (len > lens - start)
 		len = lens - start;
 	res = malloc((sizeof(char) * (len + 1)));
-	if(!res)
+	if (!res)
 		return (NULL);
 	while (cont < len)
 	{
@@ -42,19 +72,19 @@ char	*ft_substr(char const *s, unsigned int start, size_t len)
 	res[cont] = '\0';
 	return (res);
 }
-
+*/
 /*
 int	main(void)
 {
 	char	*s;
 	char	*s1;
 
-    s = "Albus Percival Wulfric Brian Dumbledore";
-    s1 = "";
-    printf("Resultado: %s\n", ft_substr(s, 29, 12));
-    printf("Resultado: %s\n", ft_substr(s, 0, 5));
-    printf("Resultado: %s\n", ft_substr(s1, 6, 8));
-    printf("Resultado: %s\n", ft_substr(s, 29, 15));
-    return (0);
+	s = "Albus Percival Wulfric Brian Dumbledore";
+	s1 = "";
+	printf("Resultado: %s\n", ft_substr(s, 29, 12));
+	printf("Resultado: %s\n", ft_substr(s, 0, 5));
+	printf("Resultado: %s\n", ft_substr(s1, 6, 8));
+	printf("Resultado: %s\n", ft_substr(s, 29, 15));
+	return (0);
 }
-    */
+	*/

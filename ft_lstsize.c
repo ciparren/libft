@@ -15,24 +15,21 @@
 
 int	ft_lstsize(t_list *lst)
 {
-	t_list	*aux;
-	int		cont;
+	int	count;
 
-	aux = ft_lstnew(NULL);
-	aux = lst;
-	cont = 0;
-	while (aux != NULL)
+	count = 0;
+	while (lst != NULL)
 	{
-		aux = aux->next;
-		cont++;
+		lst = lst->next;
+		count++;
 	}
-	return (cont);
+	return (count);
 }
 
 /*
 int	main(void)
 {
-    t_list	*head;
+	t_list	*head;
 	t_list	*node1;
 	t_list	*node2;
 	t_list	*node3;
@@ -42,7 +39,7 @@ int	main(void)
 	head = NULL;
 	size = ft_lstsize(head);
 	printf("Test 1 - Lista vacía: %d (Esperado: 0)\n", size);
-	// 2. Crear nodos usando ft_lstnew 
+	// 2. Crear nodos usando ft_lstnew
 	node1 = ft_lstnew("Nodo 1");
 	node2 = ft_lstnew("Nodo 2");
 	node3 = ft_lstnew("Nodo 3");
@@ -58,7 +55,6 @@ int	main(void)
 	// 4. Añadir más nodos
 	ft_lstadd_front(&head, node2);
 	ft_lstadd_front(&head, node3);
-	
 	// La lista ahora es: Nodo 3 -> Nodo 2 -> Nodo 1 -> NULL
 	size = ft_lstsize(head);
 	printf("Test 3 - Tres nodos: %d (Esperado: 3)\n", size);

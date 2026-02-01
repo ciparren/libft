@@ -1,43 +1,27 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_putnbr_fd.c                                     :+:      :+:    :+:   */
+/*   ft_strlcat.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ciparren <ciparren@student.42madrid.c      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2026/01/27 19:13:48 by ciparren          #+#    #+#             */
-/*   Updated: 2026/01/27 19:13:51 by ciparren         ###   ########.fr       */
+/*   Created: 2026/01/16 12:44:33 by ciparren          #+#    #+#             */
+/*   Updated: 2026/01/16 12:44:34 by ciparren         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
-
 #include "libft.h"
-#include <stdio.h>
 
-static void	aux(long n, int fd)
+char	*ft_strdup(const char *s)
 {
-	char	c;
+	char	*dup;
+	size_t	len;
 
-	if (n >= 10)
-		aux(n / 10, fd);
-	c = (n % 10) + '0';
-	write(fd, &c, 1);
+	if (!s)
+		return (NULL);
+	len = ft_strlen(s);
+	dup = malloc(len + 1);
+	if (!dup)
+		return (NULL);
+	ft_strlcpy(dup, s, len + 1);
+	return (dup);
 }
-
-void	ft_putnbr_fd(int n, int fd)
-{
-	long	nbr;
-
-	nbr = n;
-	if (nbr < 0)
-	{
-		write(fd, "-", 1);
-		nbr = -nbr;
-	}
-	aux(nbr, fd);
-}
-/*
-int	main(void)
-{
-	ft_putnbr_fd(3214, 1);
-}
-*/

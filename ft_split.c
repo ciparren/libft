@@ -11,7 +11,7 @@
 /* ************************************************************************** */
 #include "libft.h"
 
-void	*free_all(char **arr, int words)
+static char	**free_all(char **arr, int words)
 {
 	int	i;
 
@@ -25,7 +25,7 @@ void	*free_all(char **arr, int words)
 	return (NULL);
 }
 
-size_t	count_words(char const *s, char c)
+static size_t	count_words(char const *s, char c)
 {
 	size_t	count;
 	size_t	i;
@@ -46,44 +46,54 @@ size_t	count_words(char const *s, char c)
 	return (count);
 }
 
-static int	word_len(const char *s, int i, char c)
+static size_t	get_word_len(char const *s, char c)
 {
-	int	len;
+	size_t	len;
 
 	len = 0;
-	while (s[i + len] && s[i + len] != c)
+	while (s[len] && s[len] != c)
 		len++;
 	return (len);
 }
 
-char	**ft_split(char const *s, char c)
+static char	**fill(char **res, char const *s, char c)
 {
-	char	**res;
 	size_t	i;
-	size_t	len;
 	size_t	j;
+	size_t	len;
 
-	if (!s)
-		return (NULL);
-	res = (char **)malloc(sizeof(char *) * (count_words(s, c) + 1));
-	if (!res)
-		return (NULL);
 	i = 0;
 	j = 0;
 	while (s[i])
 	{
 		while (s[i] == c)
 			i++;
-		len = word_len(s, i, c);
-		res[j] = ft_substr(s, i, len);
-		if (!res[j])
-			return (free_all(res, j));
-		j++;
-		i += len;
+		if (s[i])
+		{
+			len = get_word_len(&s[i], c);
+			res[j] = ft_substr(s, i, len);
+			if (!res[j])
+				return (free_all(res, j));
+			j++;
+			i += len;
+		}
 	}
 	res[j] = NULL;
 	return (res);
 }
+
+char	**ft_split(char const *s, char c)
+{
+	char	**res;
+
+	if (!s)
+		return (NULL);
+	res = (char **)malloc(sizeof(char *) * (count_words(s, c) + 1));
+	if (!res)
+		return (NULL);
+	return (fill(res, s, c));
+}
+
 /*
 int	main(void)
 {
@@ -122,7 +132,6 @@ int	main(void)
 			contc++;
 		i++;
 	}
-	
 	// reservo el número de filas, que lo sé anallizando el string
 	printf("El número de palabras: %zu\n", contc + 1);
 	result = (char **)malloc(sizeof(char *) * (contc + 1));
