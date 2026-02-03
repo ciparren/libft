@@ -11,7 +11,7 @@
 /* ************************************************************************** */
 #include "libft.h"
 
-int	ft_count_numbers(int n)
+static int	ft_count_numbers(int n)
 {
 	int	len;
 

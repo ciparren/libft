@@ -19,10 +19,3 @@ void	ft_lstdelone(t_list *lst, void (*del)(void *))
 	del(lst->content);
 	free(lst);
 }
-
-/*
-Recibe como parámetro un nodo ‘lst’ y libera la
-memoria del contenido utilizando la función ‘del’
-dada como parámetro. También libera el nodo en sí
-mismo, pero no libera el siguiente nodo.
-*/

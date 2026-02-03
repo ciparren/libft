@@ -12,11 +12,6 @@
 
 #include "libft.h"
 
-void	del(void *content)
-{
-	printf(" -> Eliminando contenido: %s\n", (char *)content);
-}
-
 void	ft_lstclear(t_list **lst, void (*del)(void *))
 {
 	t_list	*tmp;
@@ -31,41 +26,4 @@ void	ft_lstclear(t_list **lst, void (*del)(void *))
 	}
 	*lst = NULL;
 }
-/*
-int	main(void)
-{
-	t_list	*head;
-	t_list	*nodo1;
-	t_list	*nodo2;
-	t_list	*nodo3;
 
-	// 2. PREPARACIÓN: Crear una lista con 3 nodos
-	// Nota: Usamos strings estáticos para simplificar,
-		así que la función del_spy
-	// no hará 'free' del texto, solo 'free' del nodo (que hace ft_lstdelone).
-	head = NULL;
-	nodo1 = ft_lstnew("Primero");
-	nodo2 = ft_lstnew("Segundo");
-	nodo3 = ft_lstnew("Tercero");
-	// Enlazar manualmente si no tienes ft_lstadd_back confiable aún
-	head = nodo1;
-	nodo1->next = nodo2;
-	nodo2->next = nodo3;
-	nodo3->next = NULL; 
-	printf("--- ESTADO INICIAL ---\n");
-	printf("Cabeza apunta a: %p\n", (void *)head);
-	printf("Contenido nodo 1: %s\n", (char *)head->content);
-	// 3. PRUEBA DE FUEGO: Llamar a ft_lstclear
-	printf("\n--- EJECUTANDO FT_LSTCLEAR ---\n");
-	// Pasamos la dirección de head (&head) porque lstclear pide t_list **
-	ft_lstclear(&head, del);
-	// 4. VERIFICACIÓN FINAL
-	printf("\n--- RESULTADO FINAL ---\n");
-	if (head == NULL)
-		printf("CORRECTO: La variable 'head' ahora es NULL.\n");
-	else
-		printf("ERROR: 'head' sigue apuntando a %p (Debería ser NULL).\n",
-				(void *)head);
-	return (0);
-}
-    */

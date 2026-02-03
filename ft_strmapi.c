@@ -12,17 +12,6 @@
 
 #include "libft.h"
 
-/*
-char	upper(unsigned int i, char c)
-{
-	if (c >= 'a' && c <= 'z')
-	{
-		return (c - 32);
-	}
-	return (c); // Si es impar, devolvemos el carácter tal cual
-}
-*/
-
 char	*ft_strmapi(char const *s, char (*f)(unsigned int, char))
 {
 	unsigned int	i;
