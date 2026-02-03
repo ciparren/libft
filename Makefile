@@ -1,42 +1,48 @@
-# Variables
-NAME = libft.a
-CC = cc
-CFLAGS = -Wall -Wextra -Werror
-AR = ar rcs
-RM = rm -f
+NAME    = libft.a
+CC      = cc
+CFLAGS  = -Wall -Wextra -Werror
+AR      = ar rcs
+RM      = rm -f
 
-# 1. CORRECCIÓN: Nombres reales de tus archivos (sin _bonus)
-SRC = ft_isalpha.c ft_isdigit.c ft_isalnum.c ft_isascii.c ft_isprint.c \
-      ft_strlen.c ft_memset.c ft_bzero.c ft_memcpy.c ft_memmove.c \
-      ft_strlcpy.c ft_strlcat.c ft_toupper.c ft_tolower.c ft_strchr.c \
-      ft_strrchr.c ft_strncmp.c ft_memchr.c ft_memcmp.c ft_strnstr.c \
-      ft_atoi.c ft_calloc.c ft_strdup.c ft_substr.c ft_strjoin.c \
-      ft_strtrim.c ft_split.c ft_itoa.c ft_strmapi.c ft_striteri.c \
-      ft_putchar_fd.c ft_putstr_fd.c ft_putendl_fd.c ft_putnbr_fd.c \
-      ft_lstnew.c ft_lstadd_front.c ft_lstsize.c ft_lstlast.c \
-      ft_lstadd_back.c ft_lstdelone.c ft_lstclear.c ft_lstiter.c ft_lstmap.c
+# Lista completa de archivos fuente (Parte 1, Parte 2 y Bonus integrados)
+SRCS    = ft_isalpha.c ft_isdigit.c ft_isalnum.c ft_isascii.c ft_isprint.c \
+          ft_strlen.c ft_memset.c ft_bzero.c ft_memcpy.c ft_memmove.c \
+          ft_strlcpy.c ft_strlcat.c ft_toupper.c ft_tolower.c ft_strchr.c \
+          ft_strrchr.c ft_strncmp.c ft_memchr.c ft_memcmp.c ft_strnstr.c \
+          ft_atoi.c ft_calloc.c ft_strdup.c \
+          ft_substr.c ft_strjoin.c ft_strtrim.c ft_split.c ft_itoa.c \
+          ft_strmapi.c ft_striteri.c ft_putchar_fd.c ft_putstr_fd.c \
+          ft_putendl_fd.c ft_putnbr_fd.c \
+          ft_lstnew.c ft_lstadd_front.c ft_lstsize.c ft_lstlast.c \
+          ft_lstadd_back.c ft_lstdelone.c ft_lstclear.c ft_lstiter.c ft_lstmap.c
 
-OBJ = $(SRC:.c=.o)
+# Generación de nombres de archivos objeto (.o) a partir de los .c
+OBJS    = $(SRCS:.c=.o)
 
-# Reglas
+# Regla principal: Compila todo
 all: $(NAME)
 
-$(NAME): $(OBJ)
-	$(AR) $(NAME) $(OBJ)
+# Creación de la librería: Depende de los objetos. Usa 'ar' para archivar.
+$(NAME): $(OBJS)
+	$(AR) $(NAME) $(OBJS)
 
+# Compilación implícita de objetos: De .c a .o
 %.o: %.c
 	$(CC) $(CFLAGS) -c $< -o $@
 
-# 2. CORRECCIÓN: La regla bonus para que Francinette no falle
-# Simplemente depende de $(NAME), así que no necesita archivos _bonus.c
-bonus: $(NAME)
-
+# Regla clean: Elimina los archivos objeto (.o)
 clean:
-	$(RM) $(OBJ)
+	$(RM) $(OBJS)
 
+# Regla fclean: Elimina los objetos y la librería (.a)
 fclean: clean
 	$(RM) $(NAME)
 
+# Regla re: Limpieza total y recompilación
 re: fclean all
 
+# Regla bonus: Como todo es obligatorio, bonus es un alias de all
+bonus: all
+
+# Indica que estas reglas no son archivos
 .PHONY: all clean fclean re bonus
