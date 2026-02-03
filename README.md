@@ -41,10 +41,12 @@ El proyecto incluye un `Makefile` que gestiona la compilación de la librería e
 
 ### Uso
 Para utilizar esta librería en tus proyectos:
-Incluye el archivo de cabecera en tu código:
+1.  Incluye el archivo de cabecera en tu código:
     ```c
     #include "libft.h"
     ```
+
+
 ## 📚 Contenido de la Librería
 
 ### 1. Funciones de Libc
