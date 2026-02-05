@@ -84,3 +84,5 @@ Funciones para manipular la estructura de datos `t_list`.
 *   `ft_lstiter`: Itera sobre la lista aplicando una función al contenido.
 *   `ft_lstmap`: Itera sobre la lista y crea una nueva aplicando una función al contenido.
 
+### 4 
+
